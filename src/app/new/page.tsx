@@ -79,7 +79,7 @@ const Page = () => {
         isSearchable={true}
         onChange={handlePokemon}
         styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
-        menuPortalTarget={document.body}
+        menuPlacement="top"
       />
       <TextField
         fullWidth

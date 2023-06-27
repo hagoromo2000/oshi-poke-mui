@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="ja">
       <head />
       <body className={inter.className}>
-        <div className="bg-gray-100">
+        <div className="bg-white">
           <Header />
           <ToastContainer
             position="top-right"
