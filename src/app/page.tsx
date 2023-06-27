@@ -42,12 +42,14 @@ export default function Home() {
   }
 
   return (
-    <Grid container spacing={2} justifyContent="center">
-      {data.map((item: Item) => (
-        <Grid item xs={12} sm={6} md={3} key={item.id}>
-          <PokemonCard item={item} />
-        </Grid>
-      ))}
-    </Grid>
+    <Box sx={{ marginTop: 4, display: "flex", justifyContent: "center" }}>
+      <Grid container spacing={2} justifyContent="center">
+        {data.map((item: Item) => (
+          <Grid item xs={12} sm={8} md={6} lg={4} xl={3} key={item.id}>
+            <PokemonCard item={item} />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 }
