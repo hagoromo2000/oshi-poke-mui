@@ -75,7 +75,7 @@ const Page = () => {
       )}
       <Select
         options={all_pokemons}
-        placeholder="ポケモンを選ぶ！"
+        placeholder="ポケモンを選ぶ！（カタカナで絞り込めます！）"
         isSearchable={true}
         onChange={handlePokemon}
         styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
