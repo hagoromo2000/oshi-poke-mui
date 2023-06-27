@@ -21,7 +21,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="bg-gray-100">
           <Header />
-
           <ToastContainer
             position="top-right"
             autoClose={5000}
