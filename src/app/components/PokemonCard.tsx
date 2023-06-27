@@ -34,7 +34,15 @@ const PokemonCard = ({ item }: PokemonCardProps) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {item.pokemon}
+            {item.pokemon}{" "}
+            <TwitterIntentTweet
+              className="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+              text={`私の推しポケモンは${item.pokemon}!`}
+              url={window.location.href}
+              hashtags={["私の推しポケモン"]}
+            >
+              <TwitterIcon color="primary" />
+            </TwitterIntentTweet>
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {item.description}
@@ -44,14 +52,6 @@ const PokemonCard = ({ item }: PokemonCardProps) => {
           <Typography variant="body2" color="text.secondary">
             {item.author}
           </Typography>
-          <TwitterIntentTweet
-            className="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
-            text={`私の推しポケモンは${item.pokemon}!`}
-            url={window.location.href}
-            hashtags={["私の推しポケモン"]}
-          >
-            <TwitterIcon color="primary" />
-          </TwitterIntentTweet>
         </CardActions>
       </Card>
     </Box>
