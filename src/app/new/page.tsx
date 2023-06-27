@@ -7,6 +7,7 @@ import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 import Pokemons from "@/json/all_pokemons.json";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const all_pokemons = Pokemons.map((data) => {
   return { value: data, label: data.name };
@@ -17,6 +18,7 @@ const Page = () => {
   const [pokemonImageUrl, setPokemonImageUrl] = useState("silhouette.jpg");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handlePokemon = (event: any) => {
@@ -31,18 +33,33 @@ const Page = () => {
       .catch((err) => console.error(err));
   };
 
-  const isButtonDisabled = !description || !author || !pokemon;
+  const isButtonDisabled = !description || !author || !pokemon || isLoading;
 
-  const handleSubmit = () => {
-    axios
-      .post("/api/create", {
-        pokemon: pokemon,
-        description: description,
-        imageUrl: pokemonImageUrl,
-        author: author,
-      })
-      .catch((err) => console.error(err));
-    router.push("/");
+  const handleSubmit = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await axios.post(
+        "/api",
+        {
+          pokemon: pokemon,
+          description: description,
+          image_url: pokemonImageUrl,
+          author: author,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      router.push("/");
+      toast.success("投稿しました！");
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
