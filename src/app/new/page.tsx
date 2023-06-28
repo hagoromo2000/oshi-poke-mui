@@ -33,7 +33,8 @@ const Page = () => {
       .catch((err) => console.error(err));
   };
 
-  const isButtonDisabled = !description || !author || !pokemon || isLoading;
+  const isButtonDisabled =
+    !description.trim() || !author.trim() || !pokemon || isLoading;
 
   const handleSubmit = async () => {
     setIsLoading(true);
